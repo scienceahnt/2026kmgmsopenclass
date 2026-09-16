@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>경민여중 공개수업 · 층별 게시문 (A4 인쇄용)</title>
+<style>
+  @page { size: A4 portrait; margin: 12mm; }
+
+  :root{
+    --ink:#111318;
+    --sub:#4a4f56;
+    --line:#c8ced4;
+    --red:#c0201d;
+    --blue:#0f52ad;
+    --green:#0d6b35;
+    --gold:#e0a500;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  p,h1{margin:0}
+  body{
+    background:#e9ecef;color:var(--ink);
+    font-family:"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;
+    line-height:1.4;word-break:keep-all;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  }
+
+  /* ── 화면 전용 조작 바 ─────────────────── */
+  .bar{
+    position:sticky;top:0;z-index:5;background:#fff;border-bottom:2px solid var(--line);
+    padding:14px 18px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;
+  }
+  .bar h1{font-size:16px;margin:0;flex:none}
+  .bar p{margin:0;font-size:13px;color:var(--sub);flex:1 1 260px}
+  .bar input{
+    font:inherit;font-size:13px;padding:8px 11px;border:1px solid var(--line);
+    border-radius:6px;flex:1 1 300px;min-width:200px;
+  }
+  .bar button{
+    font:inherit;font-size:13px;font-weight:700;padding:9px 18px;border:0;
+    border-radius:6px;background:var(--ink);color:#fff;cursor:pointer;
+  }
+  .bar button.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+
+  .stack{padding:22px 0 60px;display:flex;flex-direction:column;align-items:center;gap:22px}
+
+  /* ── A4 한 장 ──────────────────────────── */
+  .sheet{
+    width:210mm;min-height:297mm;padding:14mm;background:#fff;
+    display:flex;flex-direction:column;
+    box-shadow:0 2px 14px rgba(0,0,0,.16);
+  }
+  .head{
+    display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+    padding-bottom:5mm;border-bottom:2.5pt solid var(--ink);
+  }
+  .head .school{font-size:15pt;font-weight:700}
+  .head .when{font-size:13pt;font-weight:700;color:var(--sub)}
+
+  .big{display:flex;align-items:baseline;gap:5mm;margin:5mm 0 2mm}
+  .big .num{font-size:62pt;font-weight:800;line-height:.9;letter-spacing:-.04em}
+  .big .lab{font-size:18pt;font-weight:700;color:var(--sub)}
+
+  .subtitle{font-size:15pt;font-weight:700;color:var(--sub);margin-bottom:4mm}
+
+  .items{display:flex;flex-direction:column;gap:3mm;flex:1}
+  .item{
+    display:flex;align-items:center;gap:6mm;
+    border:2.5pt solid var(--c,var(--line));border-radius:3mm;padding:3.5mm 5mm;
+  }
+  .item.main{--c:var(--red)}
+  .item.east{--c:var(--blue)}
+  .item.out{--c:var(--green)}
+  .item .cls{
+    font-size:44pt;font-weight:800;letter-spacing:-.05em;line-height:1;
+    color:var(--c,var(--ink));flex:none;min-width:52mm;
+  }
+  .item .mid{flex:1;min-width:0}
+  .item .subj{font-size:22pt;font-weight:700;line-height:1.15}
+  .item .tchr{font-size:13pt;color:var(--sub);font-weight:700}
+  .item .dir{text-align:right;flex:none}
+  .item .arrow{font-size:25pt;font-weight:800;line-height:1;color:var(--c,var(--ink))}
+  .item .zone{font-size:17pt;font-weight:800;color:var(--c,var(--ink));white-space:nowrap}
+  .item .room{font-size:14pt;font-weight:700;color:var(--sub);white-space:nowrap}
+  .item .time{font-size:12pt;color:var(--sub);font-weight:700;white-space:nowrap}
+
+  /* 현관 전체 안내 */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm;flex:1;align-content:start}
+  .cell{border:2pt solid var(--c,var(--line));border-radius:2.5mm;padding:3mm;text-align:center}
+  .cell.main{--c:var(--red)} .cell.east{--c:var(--blue)} .cell.out{--c:var(--green)}
+  .cell .n{font-size:25pt;font-weight:800;letter-spacing:-.05em;line-height:1;color:var(--c)}
+  .cell .w{font-size:13pt;font-weight:800;margin-top:1.5mm;color:var(--c)}
+  .cell .r{font-size:11pt;color:var(--sub);font-weight:700}
+
+  .keys{display:flex;gap:7mm;margin:3.5mm 0 0;font-size:12pt;font-weight:700}
+  .keys span{display:flex;align-items:center;gap:2.5mm}
+  .keys i{width:5mm;height:5mm;border-radius:1mm;border:2pt solid;display:inline-block}
+  .k1{border-color:var(--red);color:var(--red)}
+  .k2{border-color:var(--blue);color:var(--blue)}
+  .k3{border-color:var(--green);color:var(--green)}
+
+  .foot{
+    margin-top:4mm;padding-top:3.5mm;border-top:1.5pt solid var(--line);
+    display:flex;justify-content:space-between;align-items:center;gap:8mm;
+  }
+  .foot .txt{font-size:12.5pt;font-weight:700;color:var(--sub)}
+  .foot .txt b{color:var(--ink);display:block;font-size:15pt;margin-bottom:1mm}
+  .foot .txt .url{font-size:10pt;font-weight:400;word-break:break-all;max-width:110mm;display:block}
+  .qr{
+    width:26mm;height:26mm;flex:none;border:1.5pt dashed var(--line);border-radius:2mm;
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    font-size:8.5pt;color:var(--sub);padding:2mm;
+  }
+  .qr img,.qr canvas{width:100%!important;height:100%!important;display:block}
+
+  .note{
+    margin-top:2.5mm;padding:3mm 4.5mm;border-radius:2mm;background:#f4f6f8;
+    border:1.5pt solid var(--line);font-size:12pt;font-weight:700;color:var(--sub);
+  }
+  .note b{color:var(--ink)}
+
+  @media print{
+    body{background:#fff}
+    .bar{display:none}
+    .stack{padding:0;gap:0;display:block}
+    .sheet{width:auto;min-height:auto;height:273mm;padding:0;box-shadow:none;
+      page-break-after:always;break-after:page;display:flex}
+    .sheet:last-child{page-break-after:auto;break-after:auto}
+  }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <h1>층별 게시문 · A4 6장</h1>
+  <p>링크를 넣으면 각 장 QR이 만들어집니다. 그다음 <b>인쇄</b>를 누르세요.</p>
+  <input id="url" type="url" placeholder="https://... 안내문 주소를 붙여넣으세요">
+  <button class="ghost" id="make" type="button">QR 만들기</button>
+  <button id="print" type="button">인쇄</button>
+</div>
+
+<div class="stack">
+
+  <!-- 1 ─ 현관 : 전체 안내 -->
+  <section class="sheet">
+    <div class="head"><span class="school">경민여자중학교</span><span class="when">2026. 9. 22.(화) · 6교시 14:30–15:15</span></div>
+    <div class="big"><span class="num">전체</span><span class="lab">안내</span></div>
+    <p class="subtitle">6교시에 11개 학급 전체가 문을 엽니다</p>
+
+    <div class="grid">
+      <div class="cell main"><p class="n">1-1</p><p class="w">5층 본관</p><p class="r">1-1 교실 · 국어</p></div>
+      <div class="cell out"><p class="n">1-2</p><p class="w">운동장</p><p class="r">체육</p></div>
+      <div class="cell east"><p class="n">1-3</p><p class="w">5층 동편</p><p class="r">1-3 교실 · 종교</p></div>
+      <div class="cell east"><p class="n">2-1</p><p class="w">4층 동편</p><p class="r">사회교과실 · 도덕</p></div>
+      <div class="cell east"><p class="n">2-2</p><p class="w">2층 동편</p><p class="r">2-2 교실 · 역사</p></div>
+      <div class="cell east"><p class="n">2-3</p><p class="w">2층 동편</p><p class="r">2-3 교실 · 국어</p></div>
+      <div class="cell east"><p class="n">2-4</p><p class="w">2층 동편</p><p class="r">2-4 교실 · 미술</p></div>
+      <div class="cell main"><p class="n">3-1</p><p class="w">4층 본관</p><p class="r">3-1 교실 · 진로</p></div>
+      <div class="cell main"><p class="n">3-2</p><p class="w">4층 본관</p><p class="r">3-2 교실 · 수학</p></div>
+      <div class="cell main"><p class="n">3-3</p><p class="w">6층 본관</p><p class="r">음악실 · 음악</p></div>
+      <div class="cell east"><p class="n">3-4</p><p class="w">4층 동편</p><p class="r">3-4 교실 · 사회</p></div>
+    </div>
+
+    <div class="keys">
+      <span><i class="k1"></i>본관 — 세로로 뻗은 쪽</span>
+      <span><i class="k2"></i>동편 — 가로로 뻗은 쪽</span>
+      <span><i class="k3"></i>야외</span>
+    </div>
+    <p class="note"><b>본관과 동편</b>은 각 층 <b>모서리 계단</b>으로 이어집니다. 층을 옮기지 않고 건너가실 수 있습니다.</p>
+
+    <div class="foot">
+      <p class="txt"><b>문의 031-828-7882</b>휴대전화로 자세한 안내 보기<span class="url" data-url>주소를 입력하면 여기에 표시됩니다</span></p>
+      <div class="qr" data-qr>QR<br>자리</div>
+    </div>
+  </section>
+
+  <!-- 2 ─ 2층 -->
+  <section class="sheet">
+    <div class="head"><span class="school">경민여자중학교 공개수업</span><span class="when">9. 22.(화) 6교시 14:30–15:15</span></div>
+    <div class="big"><span class="num">2층</span><span class="lab">이 층에서 열리는 수업</span></div>
+    <div class="items">
+      <div class="item east"><p class="cls">2-2</p><div class="mid"><p class="subj">역사</p><p class="tchr">박○○ 선생님</p></div>
+        <div class="dir"><p class="arrow">→</p><p class="zone">동편</p><p class="room">2-2 교실</p></div></div>
+      <div class="item east"><p class="cls">2-3</p><div class="mid"><p class="subj">국어</p><p class="tchr">이○○ 선생님</p></div>
+        <div class="dir"><p class="arrow">→</p><p class="zone">동편</p><p class="room">2-3 교실</p></div></div>
+      <div class="item east"><p class="cls">2-4</p><div class="mid"><p class="subj">미술</p><p class="tchr">김○○ 선생님</p></div>
+        <div class="dir"><p class="arrow">→</p><p class="zone">동편</p><p class="room">2-4 교실</p></div></div>
+    </div>
+    <p class="note">2학년 교실은 모두 <b>2층 동편</b>에 나란히 있습니다. <b>2-1 도덕</b>은 이 층이 아니라 <b>4층 동편 사회교과실</b>입니다.</p>
+    <div class="foot">
+      <p class="txt"><b>문의 031-828-7882</b>전체 안내 보기<span class="url" data-url></span></p>
+      <div class="qr" data-qr>QR<br>자리</div>
+    </div>
+  </section>
+
+  <!-- 3 ─ 4층 -->
+  <section class="sheet">
+    <div class="head"><span class="school">경민여자중학교 공개수업</span><span class="when">9. 22.(화) 6교시 14:30–15:15</span></div>
+    <div class="big"><span class="num">4층</span><span class="lab">이 층에서 열리는 수업</span></div>
+    <div class="items">
+      <div class="item main"><p class="cls">3-1</p><div class="mid"><p class="subj">진로</p><p class="tchr">조○○ 선생님</p></div>
+        <div class="dir"><p class="arrow">←</p><p class="zone">본관</p><p class="room">3-1 교실</p></div></div>
+      <div class="item main"><p class="cls">3-2</p><div class="mid"><p class="subj">수학</p><p class="tchr">김○○ 선생님</p></div>
+        <div class="dir"><p class="arrow">←</p><p class="zone">본관</p><p class="room">3-2 교실</p></div></div>
+      <div class="item east"><p class="cls">2-1</p><div class="mid"><p class="subj">도덕</p><p class="tchr">경○○ 선생님</p></div>
+        <div class="dir"><p class="arrow">→</p><p class="zone">동편</p><p class="room">사회교과실</p></div></div>
+      <div class="item east"><p class="cls">3-4</p><div class="mid"><p class="subj">사회</p><p class="tchr">박○○ 선생님</p></div>
+        <div class="dir"><p class="arrow">→</p><p class="zone">동편</p><p class="room">3-4 교실</p></div></div>
+    </div>
+    <p class="note"><b>2-1</b>은 자기 교실이 아니라 이 층 <b>동편 사회교과실</b>입니다. <b>3-3</b> 교실도 이 층이지만, 3-3 음악 수업은 <b>6층 본관 음악실</b>에서 합니다.</p>
+    <div class="foot">
+      <p class="txt"><b>문의 031-828-7882</b>전체 안내 보기<span class="url" data-url></span></p>
+      <div class="qr" data-qr>QR<br>자리</div>
+    </div>
+  </section>
+
+  <!-- 4 ─ 5층 -->
+  <section class="sheet">
+    <div class="head"><span class="school">경민여자중학교 공개수업</span><span class="when">9. 22.(화) 6교시 14:30–15:15</span></div>
+    <div class="big"><span class="num">5층</span><span class="lab">이 층에서 열리는 수업</span></div>
+    <div class="items">
+      <div class="item main"><p class="cls">1-1</p><div class="mid"><p class="subj">국어</p><p class="tchr">박○○ 선생님</p></div>
+        <div class="dir"><p class="arrow">←</p><p class="zone">본관</p><p class="room">1-1 교실</p></div></div>
+      <div class="item east"><p class="cls">1-3</p><div class="mid"><p class="subj">종교</p><p class="tchr">박○○ 선생님</p></div>
+        <div class="dir"><p class="arrow">→</p><p class="zone">동편</p><p class="room">1-3 교실</p></div></div>
+    </div>
+    <p class="note">같은 5층이지만 <b>1-1은 본관(세로), 1-3은 동편(가로)</b>으로 계단을 끼고 반대편입니다. <b>1-2</b>는 교실이 아니라 <b>운동장</b>에서 체육 수업을 합니다.</p>
+    <div class="foot">
+      <p class="txt"><b>문의 031-828-7882</b>전체 안내 보기<span class="url" data-url></span></p>
+      <div class="qr" data-qr>QR<br>자리</div>
+    </div>
+  </section>
+
+  <!-- 5 ─ 6층 -->
+  <section class="sheet">
+    <div class="head"><span class="school">경민여자중학교 공개수업</span><span class="when">2026. 9. 22.(화)</span></div>
+    <div class="big"><span class="num">6층</span><span class="lab">이 층에서 열리는 수업</span></div>
+    <div class="items">
+      <div class="item main"><p class="cls">3-3</p><div class="mid"><p class="subj">음악</p><p class="tchr">김○○ 선생님 · 6교시 14:30–15:15</p></div>
+        <div class="dir"><p class="arrow">←</p><p class="zone">본관</p><p class="room">음악실</p></div></div>
+      <div class="item east"><p class="cls">1-2</p><div class="mid"><p class="subj">과학 · 미래형 과학실</p><p class="tchr">원○○ 선생님 · 3교시 11:05–11:50</p></div>
+        <div class="dir"><p class="arrow">→</p><p class="zone">동편</p><p class="room">과학실1</p></div></div>
+      <div class="item east"><p class="cls">2-4</p><div class="mid"><p class="subj">과학 · 미래형 과학실</p><p class="tchr">박○○ 선생님 · 4교시 12:00–12:45</p></div>
+        <div class="dir"><p class="arrow">→</p><p class="zone">동편</p><p class="room">과학실1</p></div></div>
+      <div class="item east"><p class="cls">3-2</p><div class="mid"><p class="subj">과학 · 미래형 과학실</p><p class="tchr">안○○ 선생님 · 5교시 13:35–14:20</p></div>
+        <div class="dir"><p class="arrow">→</p><p class="zone">동편</p><p class="room">과학실1</p></div></div>
+    </div>
+    <p class="note"><b>과학실1</b>에서 3 · 4 · 5교시 세 수업이 이어집니다. <b>음악실</b>은 학부모실 아래 <b>본관</b> 쪽입니다.</p>
+    <div class="foot">
+      <p class="txt"><b>문의 031-828-7882</b>전체 안내 보기<span class="url" data-url></span></p>
+      <div class="qr" data-qr>QR<br>자리</div>
+    </div>
+  </section>
+
+  <!-- 6 ─ 운동장 -->
+  <section class="sheet">
+    <div class="head"><span class="school">경민여자중학교 공개수업</span><span class="when">9. 22.(화) 6교시 14:30–15:15</span></div>
+    <div class="big"><span class="num">운동장</span></div>
+    <p class="subtitle">이곳에서 열리는 수업</p>
+    <div class="items">
+      <div class="item out"><p class="cls">1-2</p><div class="mid"><p class="subj">체육 · 순환식 건강운동</p><p class="tchr">박○○ 선생님</p></div>
+        <div class="dir"><p class="zone">운동장</p><p class="room">야외</p></div></div>
+    </div>
+    <p class="note">비가 오면 실내로 옮길 수 있습니다. 안내 방송을 들어 주세요.</p>
+    <div class="foot">
+      <p class="txt"><b>문의 031-828-7882</b>전체 안내 보기<span class="url" data-url></span></p>
+      <div class="qr" data-qr>QR<br>자리</div>
+    </div>
+  </section>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+(function () {
+  var input = document.getElementById('url');
+  var KEY = 'kmg-openclass-url';
+
+  try { input.value = localStorage.getItem(KEY) || ''; } catch (e) {}
+
+  function render() {
+    var url = (input.value || '').trim();
+    try { localStorage.setItem(KEY, url); } catch (e) {}
+
+    [].forEach.call(document.querySelectorAll('[data-url]'), function (el) {
+      el.textContent = url || '';
+    });
+
+    [].forEach.call(document.querySelectorAll('[data-qr]'), function (box) {
+      box.innerHTML = '';
+      if (!url) { box.textContent = 'QR 자리'; return; }
+      if (typeof QRCode === 'undefined') { box.textContent = 'QR 라이브러리를 불러오지 못했습니다'; return; }
+      try {
+        new QRCode(box, { text: url, width: 220, height: 220,
+          correctLevel: QRCode.CorrectLevel.M });
+        box.style.border = 'none';
+        box.style.padding = '0';
+      } catch (e) { box.textContent = url; }
+    });
+  }
+
+  document.getElementById('make').addEventListener('click', render);
+  input.addEventListener('change', render);
+  document.getElementById('print').addEventListener('click', function () { window.print(); });
+  if (input.value) render();
+})();
+</script>
+</body>
+</html>

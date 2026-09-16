@@ -13,10 +13,14 @@
 <meta property="og:locale" content="ko_KR">
 <meta property="og:title" content="경민여자중학교 2026학년도 2학기 공개수업">
 <meta property="og:description" content="9월 22일(화) 6교시 14:30–15:15 · 전체 11개 학급 · 반별 교실 위치 안내">
-<meta property="og:url" content="https://scienceahnt.github.io/openclass-2026/">
-<meta property="og:image" content="https://scienceahnt.github.io/openclass-2026/og-thumbnail.jpg">
+<meta property="og:url" content="https://scienceahnt.github.io/2026kmgmsopenclass/">
+<meta property="og:image" content="https://scienceahnt.github.io/2026kmgmsopenclass/og-thumbnail.jpg">
+<meta property="og:image:secure_url" content="https://scienceahnt.github.io/2026kmgmsopenclass/og-thumbnail.jpg">
+<meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="벚꽃이 핀 경민여자중학교 전경과 2026학년도 2학기 공개수업 안내">
+<link rel="canonical" href="https://scienceahnt.github.io/2026kmgmsopenclass/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http%3A//www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏫</text></svg>">
 <link rel="apple-touch-icon" href="og-thumbnail.jpg">
@@ -309,6 +313,59 @@ img{display:block}
   background:var(--surface);border:1px solid var(--line-soft)}
 .loctitle{font-size:var(--md);font-weight:700;margin-bottom:14px}
 .loctitle b{color:var(--tc,var(--ink))}
+/* ── 위치 카드 (한눈에 · 가로 스크롤 없음) ── */
+.mini{--c:var(--line);--cbg:var(--surface);--cink:var(--ink)}
+.mini.main{--c:var(--red);--cbg:var(--red-bg);--cink:var(--red-ink)}
+.mini.east{--c:var(--blue);--cbg:var(--blue-bg);--cink:var(--blue-ink)}
+.mini.out {--c:var(--green);--cbg:var(--green-bg);--cink:var(--green-ink)}
+.mhead{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin-bottom:4px}
+.mfloor{display:inline-flex;align-items:baseline;justify-content:center;gap:1px;
+  background:var(--ink);color:var(--bg);border-radius:9px;padding:6px 13px}
+.mfloor b{font-family:"Roboto Mono",ui-monospace,monospace;font-size:26px;
+  font-weight:700;letter-spacing:-.04em}
+.mfloor span{font-size:14px;font-weight:700}
+.mzone{font-size:26px;font-weight:700;color:var(--cink);letter-spacing:-.02em}
+.mroom{font-size:var(--lg);font-weight:700;color:var(--ink);margin-bottom:14px}
+.mroom small{font-size:var(--xs);font-weight:700;color:var(--muted);margin-left:8px}
+
+.ms{width:100%;max-width:330px;height:auto;display:block;margin:0 0 14px}
+.ms rect{fill:var(--surface);stroke:var(--line);stroke-width:2}
+.ms text{font-family:"Noto Sans KR",sans-serif;font-weight:700;text-anchor:middle;
+  fill:var(--muted);font-size:15px}
+.mini.main .ms .v{fill:var(--red-bg);stroke:var(--red);stroke-width:3.5}
+.mini.main .ms .tv{fill:var(--red-ink)}
+.mini.east .ms .h{fill:var(--blue-bg);stroke:var(--blue);stroke-width:3.5}
+.mini.east .ms .th{fill:var(--blue-ink)}
+.mini.out  .ms .f{fill:var(--green-bg);stroke:var(--green);stroke-width:3.5}
+.mini.out  .ms .tf{fill:var(--green-ink)}
+.ms .cor{fill:none;stroke:var(--muted);stroke-width:1.5;stroke-dasharray:4 3}
+.ms .sm{font-size:12px;font-weight:500}
+
+.mway{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;
+  counter-reset:step}
+.mway li{display:flex;gap:11px;align-items:flex-start;font-size:var(--sm);color:var(--ink-2)}
+.mway li::before{counter-increment:step;content:counter(step);
+  flex:none;width:24px;height:24px;border-radius:50%;
+  background:var(--c);color:var(--bg);font-size:13px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;margin-top:2px}
+.mway b{color:var(--ink)}
+.backmap{margin-top:14px;font:inherit;font-size:var(--xs);font-weight:700;cursor:pointer;
+  background:transparent;color:var(--muted);border:1px solid var(--line);
+  border-radius:999px;padding:6px 14px}
+.backmap:hover{color:var(--ink-2)}
+
+/* 선생님용 카드 안의 위치 카드 */
+.card.clickable{cursor:pointer}
+.card.clickable:hover{border-color:var(--line)}
+.locbtn{display:inline-flex;align-items:center;gap:5px;white-space:nowrap;
+  font-size:13.5px;font-weight:700;padding:4px 11px;border-radius:999px;
+  border:1px solid var(--line);color:var(--ink-2);background:var(--bg)}
+.card.open .locbtn{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.inline-mini{margin:11px 0 2px;padding:15px 16px;border-radius:9px;
+  background:var(--surface);border:1px solid var(--line-soft)}
+.inline-mini[hidden]{display:none !important}
+
+#fullmap[hidden],#minicard[hidden]{display:none !important}
 .mapwrap{position:relative}
 .mapwrap::after{content:"";position:absolute;top:0;right:0;bottom:6px;width:40px;
   background:linear-gradient(to right,transparent,var(--surface));
@@ -496,8 +553,9 @@ footer a{color:var(--blue-ink)}
     <span>경민여자중학교입니다.</span>
   </h1>
   <div class="letter">
-    <p><strong>9월 22일</strong>, 경민여자중학교가 교실 문을 활짝 엽니다. 잘 다듬어 보여 드리는 발표회가 아니라, 아이들이 매일 앉아 있는 그 자리에서 평소처럼 묻고 답하는 시간을 그대로 보여 드리려 합니다.</p>
-    <p>그날의 중심은 <strong>6교시</strong>입니다. 오후 2시 30분, <strong>전체 11개 학급이</strong> 동시에 문을 엽니다. 문학 속 갈등을 두고 서로 다투어 보기도 하고, 2028년의 대학 입시를 함께 들여다보기도 합니다. 운동장에서는 숨이 차오르는 소리가 들릴 것입니다.</p>
+    <p><strong>9월 22일</strong>, 경민여자중학교가 교실 문을 활짝 엽니다. 잘 다듬어 보여 드리는 발표회가 아니라, 아이들이 매일 앉아 있는 그 자리에서 평소의 수업을 그대로 보여 드리려 합니다.</p>
+    <p>그날의 중심은 <strong>6교시</strong>입니다. 오후 2시 30분, <strong>전체 11개 학급이</strong> 동시에 문을 엽니다. 국어와 수학, 과학과 사회, 음악과 체육까지 — 열한 개 교실이 저마다의 결로 수업을 펼칩니다.</p>
+    <p>아이들은 스스로 <strong>질문</strong>을 던지고, 친구와 머리를 맞대어 답을 찾아 갑니다. 교사는 정답을 먼저 건네기보다 한 걸음 더 들어가는 질문으로 되돌려 줍니다. 저희가 가꾸어 온 <strong>질문과 탐구 중심의 깊이 있는 수업</strong>이 교실에서 어떤 얼굴을 하고 있는지, 그대로 보아 주십시오.</p>
     <p>아이들이 조금 긴장할지도 모릅니다. 뒤에서 지켜봐 주시는 것만으로도 아이들에게는 큰 응원이 됩니다.</p>
   </div>
 
@@ -554,6 +612,8 @@ footer a{color:var(--blue-ink)}
 
   <div class="locbox">
     <p class="loctitle" id="loctitle">수업이 열리는 층</p>
+    <div id="minicard" hidden></div>
+    <div id="fullmap">
     <div class="mapwrap" id="mapwrap">
       <div class="mapscroll" id="mapscroll">
         <div class="floors">
@@ -660,6 +720,7 @@ footer a{color:var(--blue-ink)}
       </div>
     </div>
     <p class="hint" id="hint">→ 그림을 옆으로 밀어 보세요</p>
+    </div>
   </div>
 
   <div class="cards" id="cards">
@@ -865,21 +926,21 @@ footer a{color:var(--blue-ink)}
   <h2 class="h2">미래형 과학실 <span class="tag q">질문있는 수업</span></h2>
   <p class="sechead">3 · 4 · 5교시 · 6층 동편 과학실1 한 곳에서 이어서 진행</p>
   <div class="cards">
-    <article class="card east" data-s="665" data-e="710">
+    <article class="card east clickable" data-loc="sci" data-s="665" data-e="710">
       <p class="cls">1-2</p>
       <div class="cbody">
         <p class="ctop"><span class="subj">과학</span><span class="tchr">원○○ 선생님</span><span class="when">3교시 11:05–11:50</span></p>
         <p class="topic">도시 열섬 탐구<em>수집한 자료를 열 개념과 연결하기 · 탐구 수업</em></p>
       </div>
     </article>
-    <article class="card east" data-s="720" data-e="765">
+    <article class="card east clickable" data-loc="sci" data-s="720" data-e="765">
       <p class="cls">2-4</p>
       <div class="cbody">
         <p class="ctop"><span class="subj">과학</span><span class="tchr">박○○ 선생님</span><span class="when">4교시 12:00–12:45</span></p>
         <p class="topic">광합성량에 영향을 미치는 요인<em>Ⅴ. 식물과 에너지 · MBL 기반 모둠 탐구실험</em></p>
       </div>
     </article>
-    <article class="card east join" data-s="815" data-e="860">
+    <article class="card east join clickable" data-loc="sci" data-s="815" data-e="860">
       <p class="cls">3-2</p>
       <div class="cbody">
         <p class="ctop"><span class="subj">과학</span><span class="tchr">안○○ 선생님</span><span class="when">5교시 13:35–14:20</span></p>
@@ -894,19 +955,19 @@ footer a{color:var(--blue-ink)}
   <p class="sechead">의정부교육지원청 수피아 — 관내 선생님들께 공개</p>
   <p class="lede">수피아는 <b>수</b>업이 <b>피</b>어나는 <b>아</b>카데미. 독서(R) · 예술(A) · 스포츠(S) · 질문(Q) 네 갈래로 깊이있는 수업을 나눕니다. 추진 목적이 <b>“질문과 탐구 중심 깊이 있는 수업 확산”</b>이라, 경민여중은 <b>세 수업 모두 질문을 축으로</b> 열고, 오늘 2학기 수업공개에 맞춰 함께 공개합니다.</p>
   <div class="cards">
-    <div class="rqcard join" data-s="815" data-e="860">
+    <div class="rqcard join clickable" data-loc="sci" data-s="815" data-e="860">
       <b class="rasq"><i>Q</i>질문연계</b>
       <span class="tag q">질문있는 수업</span>
       <span class="txt">3-2 과학 · 에너지 전환과 보존</span>
       <span class="sub">5교시 13:35–14:20 · 6층 동편 과학실1 · 안○○ 선생님 <b>· 미래형 과학실과 동일 수업</b></span>
     </div>
-    <div class="rqcard" data-s="870" data-e="915">
+    <div class="rqcard clickable" data-loc="1-1" data-s="870" data-e="915">
       <b class="rasq"><i>R</i>독서연계</b>
       <span class="tag q">질문있는 수업</span>
       <span class="txt">1-1 국어 · 문학 속 갈등</span>
       <span class="sub">6교시 14:30–15:15 · 5층 본관 1-1 교실 · 박○○ 선생님</span>
     </div>
-    <div class="rqcard" data-s="870" data-e="915">
+    <div class="rqcard clickable" data-loc="3-3" data-s="870" data-e="915">
       <b class="rasq"><i>A</i>예술연계</b>
       <span class="tag q">질문있는 수업</span>
       <span class="txt">3-3 음악 · 서양음악사</span>
@@ -1023,6 +1084,67 @@ footer a{color:var(--blue-ink)}
     if (g) { show(g.dataset.goto, true); }
   });
 
+  /* ── 위치 카드 (우리 반 찾기 · 선생님용 공용) ── */
+  var LOC = {
+    '1-1': { f: '5', z: 'main', room: '1-1 교실' },
+    '1-2': { f: '',  z: 'out',  room: '운동장' },
+    '1-3': { f: '5', z: 'east', room: '1-3 교실' },
+    '2-1': { f: '4', z: 'east', room: '사회교과실', note: '자기 교실이 아닙니다' },
+    '2-2': { f: '2', z: 'east', room: '2-2 교실' },
+    '2-3': { f: '2', z: 'east', room: '2-3 교실' },
+    '2-4': { f: '2', z: 'east', room: '2-4 교실' },
+    '3-1': { f: '4', z: 'main', room: '3-1 교실' },
+    '3-2': { f: '4', z: 'main', room: '3-2 교실' },
+    '3-3': { f: '6', z: 'main', room: '음악실', note: '자기 교실이 아닙니다' },
+    '3-4': { f: '4', z: 'east', room: '3-4 교실' },
+    'sci': { f: '6', z: 'east', room: '과학실1', note: '미래형 과학실' }
+  };
+  var ZONE = { main: '본관', east: '동편', out: '야외' };
+
+  function shapeSVG(z) {
+    if (z === 'out') {
+      return '<svg class="ms" viewBox="0 0 300 156" role="img" aria-label="건물 밖 운동장">' +
+        '<rect x="14" y="10" width="46" height="74" rx="5"/>' +
+        '<rect x="14" y="84" width="150" height="26" rx="5"/>' +
+        '<text class="sm" x="37" y="52">학교</text>' +
+        '<rect class="f" x="14" y="122" width="272" height="30" rx="6"/>' +
+        '<text class="tf" x="150" y="143">운동장</text></svg>';
+    }
+    return '<svg class="ms" viewBox="0 0 300 156" role="img" aria-label="' +
+      (z === 'main' ? '본관, 세로로 뻗은 쪽' : '동편, 가로로 뻗은 쪽') + '">' +
+      '<rect class="v" x="16" y="12" width="60" height="96" rx="6"/>' +
+      '<rect class="h" x="16" y="108" width="268" height="36" rx="6"/>' +
+      '<rect class="cor" x="16" y="108" width="60" height="36" rx="6"/>' +
+      '<text class="tv" x="46" y="52">본관</text>' +
+      '<text class="tv sm" x="46" y="72">세로</text>' +
+      '<text class="th" x="186" y="132">동편 · 가로</text></svg>';
+  }
+
+  function miniHTML(key, opts) {
+    var L = LOC[key]; if (!L) return '';
+    var zoneName = ZONE[L.z];
+    var floorTag = L.f ? '<span class="mfloor"><b>' + L.f + '</b><span>층</span></span>' : '';
+    var steps;
+    if (L.z === 'out') {
+      steps = '<li>1층 <b>동편 로비 전시실</b> 쪽 현관으로 들어옵니다</li>' +
+              '<li>1층을 지나 <b>운동장</b>으로 나갑니다</li>';
+    } else {
+      steps = '<li>1층 <b>동편 로비 전시실</b> 쪽 현관으로 들어옵니다</li>' +
+              '<li>계단으로 <b>' + L.f + '층</b>까지 올라갑니다</li>' +
+              '<li>계단에서 <b>' + zoneName + '</b>(' +
+              (L.z === 'main' ? '세로로 뻗은 짧은 복도' : '가로로 길게 뻗은 복도') +
+              ') 쪽으로 — <b>' + L.room + '</b></li>';
+    }
+    return '<div class="mini ' + L.z + '">' +
+      '<p class="mhead">' + floorTag + '<span class="mzone">' + zoneName + '</span></p>' +
+      '<p class="mroom">' + L.room +
+        (L.note ? '<small>' + L.note + '</small>' : '') + '</p>' +
+      shapeSVG(L.z) +
+      '<ol class="mway">' + steps + '</ol>' +
+      (opts && opts.back ? '<button class="backmap" type="button" data-backmap>전체 층 지도 보기</button>' : '') +
+      '</div>';
+  }
+
   /* ── 반 선택 → 카드 + 지도 ──────────── */
   var picks  = [].slice.call(document.querySelectorAll('#pick button'));
   var cards  = [].slice.call(document.querySelectorAll('#cards .card'));
@@ -1055,17 +1177,18 @@ footer a{color:var(--blue-ink)}
         .some(function (r) { return has(r, sel); });
     });
 
+    var mini = document.getElementById('minicard');
+    var full = document.getElementById('fullmap');
     if (sel) {
-      var pb = picks.filter(function (b) { return b.dataset.c === sel; })[0];
-      var zone = pb && pb.classList.contains('main') ? '본관'
-               : pb && pb.classList.contains('out')  ? '야외' : '동편';
-      loctitle.innerHTML = '';
-      loctitle.append(sel + '반은 여기입니다 — ');
-      var strong = document.createElement('b');
-      strong.textContent = zone;
-      loctitle.append(strong);
+      loctitle.textContent = sel + '반은 여기입니다';
+      mini.innerHTML = miniHTML(sel, { back: true });
+      mini.hidden = false;
+      full.hidden = true;
     } else {
       loctitle.textContent = '수업이 열리는 층';
+      mini.hidden = true;
+      mini.innerHTML = '';
+      full.hidden = false;
     }
     if (first && first.scrollIntoView) {
       try { first.scrollIntoView({ block: 'nearest', inline: 'center' }); } catch (e) {}
@@ -1079,6 +1202,48 @@ footer a{color:var(--blue-ink)}
     });
   });
   clear.addEventListener('click', function () { sel = null; apply(); });
+
+  /* 전체 층 지도 보기 → 선택 해제 */
+  document.getElementById('minicard').addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('[data-backmap]')) { sel = null; apply(); }
+  });
+
+  /* ── 선생님용 카드 → 위치 펼치기 ────── */
+  [].forEach.call(document.querySelectorAll('.clickable[data-loc]'), function (card) {
+    var chip = document.createElement('span');
+    chip.className = 'locbtn';
+    chip.textContent = '위치 보기';
+    var host = card.querySelector('.chips') || card.querySelector('.cbody') || card;
+    if (host.classList.contains('chips')) host.appendChild(chip);
+    else if (host.classList.contains('cbody')) {
+      var row = document.createElement('p');
+      row.className = 'chips';
+      row.appendChild(chip);
+      host.appendChild(row);
+    } else card.appendChild(chip);
+
+    var panel = document.createElement('div');
+    panel.className = 'inline-mini';
+    panel.hidden = true;
+    panel.innerHTML = miniHTML(card.dataset.loc, {});
+    card.parentNode.insertBefore(panel, card.nextSibling);
+
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-expanded', 'false');
+
+    function toggle() {
+      var open = panel.hidden;
+      panel.hidden = !open;
+      card.classList.toggle('open', open);
+      card.setAttribute('aria-expanded', String(open));
+      chip.textContent = open ? '위치 닫기' : '위치 보기';
+    }
+    card.addEventListener('click', toggle);
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+  });
 
   /* ── 지도 가로 스크롤 표시 ──────────── */
   var mw = document.getElementById('mapwrap');
