@@ -484,8 +484,14 @@ img{display:block}
 .h2 .tag{vertical-align:3px;margin-left:8px;font-size:13px}
 
 /* ── 하단 버튼 ─────────────────────────── */
-.actions{display:grid;grid-template-columns:1fr;gap:11px;padding:0 0 30px}
-@media (min-width:560px){.actions{grid-template-columns:1fr 1fr}}
+.actions{display:flex;flex-direction:column;gap:14px;padding:22px 0 32px}
+.callsm{align-self:center;display:inline-flex;align-items:center;gap:9px;
+  text-decoration:none;font-size:var(--xs);font-weight:700;
+  color:var(--muted);background:var(--bg);
+  border:1px solid var(--line);border-radius:999px;padding:9px 18px;
+  font-variant-numeric:tabular-nums;transition:color .12s,border-color .12s}
+.callsm:hover{color:var(--ink-2);border-color:var(--ink-2)}
+.callsm:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 .abtn{display:flex;align-items:center;gap:14px;text-decoration:none;
   padding:16px 19px;border-radius:11px;box-shadow:var(--shadow);
   border:2px solid var(--ac);background:var(--ab);color:var(--at)}
@@ -977,12 +983,8 @@ footer a{color:var(--blue-ink)}
 </main>
 
 <div class="wrap actions">
-  <a class="abtn call" href="tel:031-828-7882">
-    <span class="ic" aria-hidden="true">☎</span>
-    <span><b>문의 전화 걸기</b><em>031-828-7882 · 경민여자중학교 교무실</em></span>
-  </a>
   <!-- 참관록 자리.
-       링크가 정해지면 아래 <span class="abtn form soon"> 한 줄을 지우고
+       링크가 정해지면 아래 <span class="abtn form soon"> 블록을 지우고
        바로 밑 <a> 주석을 풀어 href만 채우면 됩니다. -->
   <span class="abtn form soon" aria-disabled="true">
     <span class="ic" aria-hidden="true">✎</span>
@@ -994,11 +996,13 @@ footer a{color:var(--blue-ink)}
     <span><b>참관록 작성하기</b><em>수업을 보신 뒤 남겨 주세요</em></span>
   </a>
   -->
+
+  <a class="callsm" href="tel:031-828-7882"><span aria-hidden="true">☎</span>문의 031-828-7882</a>
 </div>
 
 <footer class="wrap">
   <p><b>경민여자중학교</b> · 경기도 의정부시 서부로 545 (우 11618)</p>
-  <p>전화 031-828-7882 · <a href="https://kmg-m.goeujb.kr">kmg-m.goeujb.kr</a></p>
+  <p><a href="tel:031-828-7882">031-828-7882</a> · <a href="https://kmg-m.goeujb.kr">kmg-m.goeujb.kr</a></p>
 </footer>
 
 <script>
