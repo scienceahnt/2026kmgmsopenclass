@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121417" media="(prefers-color-scheme: dark)">
+<title>참관록 · 경민여중 공개수업</title>
+<meta name="description" content="경민여자중학교 2026학년도 2학기 공개수업 참관록">
+<meta property="og:type" content="website">
+<meta property="og:title" content="참관록 · 경민여자중학교 공개수업">
+<meta property="og:description" content="보신 수업을 고르고 짧게 남겨 주세요.">
+<meta property="og:image" content="https://scienceahnt.github.io/2026kmgmsopenclass/og-thumbnail.jpg">
+<meta property="og:url" content="https://scienceahnt.github.io/2026kmgmsopenclass/observe.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http%3A//www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✎</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  color-scheme:light dark;
+  --xs:14px; --sm:15.5px; --md:17px; --lg:20px;
+  --bg:#ffffff; --raise:#ffffff; --ink:#16181b; --ink-2:#33373d; --muted:#54595f;
+  --line:#cfd4d9; --line-soft:#e3e7ea; --surface:#f3f5f7;
+  --red:#c5221f; --red-bg:#fbe5e2; --red-ink:#98201d;
+  --green:#0f7038; --green-bg:#dcf0e4; --green-ink:#0a5429;
+  --blue:#1560cd; --blue-bg:#e0ebfa; --blue-ink:#0d4791;
+  --gold:#f2b705; --on-gold:#3d2c00;
+  --shadow:0 1px 2px rgba(16,18,21,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121417; --raise:#1c1f24; --ink:#edeff2; --ink-2:#ccd0d6; --muted:#a0a5ac;
+    --line:#3d434a; --line-soft:#292e34; --surface:#1f2429;
+    --red:#f4a49d; --red-bg:#40241f; --red-ink:#f4a49d;
+    --green:#8ed4a2; --green-bg:#183527; --green-ink:#8ed4a2;
+    --blue:#a1c1f9; --blue-bg:#1a2b47; --blue-ink:#a1c1f9;
+    --gold:#f5c93f; --on-gold:#3d2c00;
+    --shadow:0 1px 2px rgba(0,0,0,.45);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121417; --raise:#1c1f24; --ink:#edeff2; --ink-2:#ccd0d6; --muted:#a0a5ac;
+  --line:#3d434a; --line-soft:#292e34; --surface:#1f2429;
+  --red:#f4a49d; --red-bg:#40241f; --red-ink:#f4a49d;
+  --green:#8ed4a2; --green-bg:#183527; --green-ink:#8ed4a2;
+  --blue:#a1c1f9; --blue-bg:#1a2b47; --blue-ink:#a1c1f9;
+  --gold:#f5c93f; --on-gold:#3d2c00;
+  --shadow:0 1px 2px rgba(0,0,0,.45);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Noto Sans KR","Malgun Gothic","Apple SD Gothic Neo",system-ui,sans-serif;
+  font-size:var(--md);line-height:1.7;-webkit-font-smoothing:antialiased;word-break:keep-all}
+h1,h2,p{margin:0}
+[hidden]{display:none!important}
+.wrap{max-width:640px;margin:0 auto;padding:0 18px}
+
+.ribbon{display:flex;height:5px}
+.ribbon i{flex:1}
+.ribbon i:nth-child(1){background:var(--red)}
+.ribbon i:nth-child(2){background:var(--green)}
+.ribbon i:nth-child(3){background:var(--gold)}
+.ribbon i:nth-child(4){background:var(--blue)}
+
+.top{padding:26px 0 8px}
+.back{display:inline-flex;align-items:center;gap:6px;font-size:var(--xs);font-weight:700;
+  color:var(--muted);text-decoration:none;margin-bottom:18px}
+.back:hover{color:var(--ink-2)}
+.kicker{font-size:13px;font-weight:700;letter-spacing:.12em;color:var(--green-ink);margin-bottom:8px}
+h1{font-family:"Noto Serif KR",serif;font-weight:700;font-size:clamp(28px,7vw,36px);
+  letter-spacing:-.02em;line-height:1.3;margin-bottom:10px}
+.lede{color:var(--ink-2);font-size:var(--md);max-width:36ch}
+
+.notice{margin:20px 0 0;padding:13px 16px;border-radius:9px;font-size:var(--sm);font-weight:700;
+  background:var(--surface);border:1.5px dashed var(--line);color:var(--muted)}
+
+form{padding:24px 0 40px}
+.entries{display:flex;flex-direction:column;gap:14px}
+
+.entry{background:var(--raise);border:1px solid var(--line-soft);border-left:6px solid var(--c,var(--line));
+  border-radius:10px;padding:16px;box-shadow:var(--shadow)}
+.entry.main{--c:var(--red)}
+.entry.east{--c:var(--blue)}
+.entry.out{--c:var(--green)}
+.ehead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.enum{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.06em}
+.remove{font:inherit;font-size:13px;font-weight:700;color:var(--muted);background:transparent;
+  border:1px solid var(--line);border-radius:999px;padding:4px 12px;cursor:pointer}
+.remove:hover{color:var(--red-ink);border-color:var(--red)}
+
+.pickrow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+label.f{display:flex;flex-direction:column;gap:5px}
+label.f > span{font-size:13px;font-weight:700;color:var(--muted)}
+select,textarea{font:inherit;color:var(--ink);background:var(--bg);
+  border:1.5px solid var(--line);border-radius:8px;width:100%}
+select{font-size:var(--md);font-weight:700;padding:11px 12px;
+  font-family:"Roboto Mono",ui-monospace,"Noto Sans KR",monospace;
+  -webkit-appearance:none;appearance:none;
+  background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);
+  background-position:calc(100% - 18px) 55%,calc(100% - 12px) 55%;
+  background-size:6px 6px,6px 6px;background-repeat:no-repeat;padding-right:34px}
+select:disabled{opacity:.6}
+select:focus,textarea:focus{outline:none;border-color:var(--ink-2);box-shadow:0 0 0 3px var(--surface)}
+
+.info{margin:12px 0 12px;min-height:30px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.info .subj{font-size:var(--lg);font-weight:700}
+.info .tchr{font-size:var(--xs);color:var(--muted);font-weight:500}
+.info .where{font-size:13.5px;font-weight:700;padding:3px 10px;border-radius:6px;white-space:nowrap}
+.entry.main .where{background:var(--red-bg);color:var(--red-ink)}
+.entry.east .where{background:var(--blue-bg);color:var(--blue-ink)}
+.entry.out .where{background:var(--green-bg);color:var(--green-ink)}
+.info .ph{font-size:var(--sm);color:var(--muted)}
+
+textarea{font-size:var(--md);line-height:1.65;padding:12px 13px;min-height:132px;resize:vertical}
+textarea::placeholder{color:var(--muted);opacity:.8}
+.count{text-align:right;font-size:12.5px;color:var(--muted);margin-top:5px;
+  font-family:"Roboto Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums}
+
+.add{margin-top:14px;width:100%;font:inherit;font-size:var(--sm);font-weight:700;cursor:pointer;
+  padding:14px;border-radius:10px;border:2px dashed var(--line);background:transparent;color:var(--ink-2)}
+.add:hover:not(:disabled){border-color:var(--ink-2)}
+.add:disabled{opacity:.5;cursor:default}
+
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+.err{margin-top:18px;padding:12px 15px;border-radius:9px;font-size:var(--sm);font-weight:700;
+  background:var(--red-bg);color:var(--red-ink);border:1.5px solid var(--red)}
+
+.submit{margin-top:22px;width:100%;font:inherit;font-size:var(--lg);font-weight:700;cursor:pointer;
+  padding:17px;border-radius:12px;border:2px solid var(--gold);background:var(--gold);color:var(--on-gold);
+  box-shadow:var(--shadow);transition:transform .12s}
+.submit:hover:not(:disabled){transform:translateY(-2px)}
+.submit:disabled{opacity:.55;cursor:default;transform:none}
+.submit:focus-visible,.add:focus-visible,.remove:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+
+.done{padding:40px 0 60px;text-align:center}
+.done .mark{width:68px;height:68px;border-radius:50%;margin:0 auto 20px;
+  background:var(--green);color:var(--bg);display:flex;align-items:center;justify-content:center;
+  font-size:34px;font-weight:700}
+.done h2{font-family:"Noto Serif KR",serif;font-size:clamp(24px,6vw,30px);margin-bottom:10px}
+.done p{color:var(--ink-2)}
+.done .id{margin-top:10px;font-family:"Roboto Mono",ui-monospace,monospace;font-size:13px;color:var(--muted)}
+.done .btns{margin-top:28px;display:flex;flex-direction:column;gap:10px;align-items:center}
+.done a,.done button{font:inherit;font-size:var(--sm);font-weight:700;text-decoration:none;cursor:pointer;
+  padding:12px 22px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink-2)}
+
+footer{border-top:1px solid var(--line);padding:22px 0 40px;font-size:var(--xs);color:var(--muted)}
+footer a{color:var(--muted)}
+
+@media (max-width:380px){ .pickrow{grid-template-columns:1fr} }
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="ribbon"><i></i><i></i><i></i><i></i></div>
+
+<header class="wrap top">
+  <a class="back" href="./">← 공개수업 안내로</a>
+  <p class="kicker">2026학년도 2학기 공개수업</p>
+  <h1>참관록</h1>
+  <p class="lede">보신 수업을 고르고 느끼신 점을 짧게 남겨 주세요. 여러 반을 보셨다면 아래에서 수업을 추가하시면 됩니다.</p>
+  <p class="notice" id="notice" hidden>참관록 제출 기능을 준비하고 있습니다. 적어 두신 내용은 이 기기에 보관됩니다.</p>
+</header>
+
+<main class="wrap">
+  <form id="form" novalidate>
+    <div class="entries" id="entries"></div>
+    <button class="add" type="button" id="add">+ 다른 수업 추가</button>
+
+    <div class="hp" aria-hidden="true">
+      <label>웹사이트<input type="text" id="website" tabindex="-1" autocomplete="off"></label>
+    </div>
+
+    <p class="err" id="err" role="alert" hidden></p>
+    <button class="submit" type="submit" id="submit">참관록 보내기</button>
+  </form>
+
+  <section class="done" id="done" hidden aria-live="polite">
+    <div class="mark" aria-hidden="true">✓</div>
+    <h2>고맙습니다</h2>
+    <p id="doneMsg">참관록이 전달되었습니다.</p>
+    <p class="id" id="doneId"></p>
+    <div class="btns">
+      <button type="button" id="again">다른 참관록 쓰기</button>
+      <a href="./">공개수업 안내로</a>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  경민여자중학교 · <a href="tel:031-828-7882">031-828-7882</a>
+</footer>
+
+<template id="tpl">
+  <div class="entry">
+    <div class="ehead">
+      <span class="enum"></span>
+      <button class="remove" type="button">삭제</button>
+    </div>
+    <div class="pickrow">
+      <label class="f"><span>학년 · 반</span>
+        <select class="cls">
+          <option value="">선택</option>
+        </select>
+      </label>
+      <label class="f"><span>교시</span>
+        <select class="per" disabled>
+          <option value="">—</option>
+        </select>
+      </label>
+    </div>
+    <div class="info"><span class="ph">반과 교시를 고르면 과목이 나옵니다</span></div>
+    <label class="f"><span>참관록</span>
+      <textarea class="comment" maxlength="2000" placeholder="수업을 보며 인상 깊었던 점, 아이들의 모습, 느끼신 점을 자유롭게 적어 주세요."></textarea>
+    </label>
+    <p class="count"><span class="n">0</span> / 2000</p>
+  </div>
+</template>
+
+<script>
+(function () {
+  /* ════ 연결 설정 ════════════════════════════════════════
+     Apps Script 웹 앱 주소를 따옴표 안에 넣으세요.
+     예) 'https://script.google.com/macros/s/AKfy…/exec'
+     ═══════════════════════════════════════════════════ */
+  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbwkqpThiQEriWIIbbqj5OPglq0wBDUFe2wRZeSNTB1kC6RjOeWlZy1qnGu4CZYyHHT-/exec';
+
+  /* 공개 수업 — 키는 Apps Script 의 CLASSES 와 같아야 합니다 */
+  var CLASSES = [
+    { k: '1-1-6', cls: '1-1', per: '6교시', subj: '국어', t: '박○○', where: '5층 본관', z: 'main' },
+    { k: '1-2-3', cls: '1-2', per: '3교시', subj: '과학', t: '원○○', where: '6층 동편 과학실1', z: 'east' },
+    { k: '1-2-6', cls: '1-2', per: '6교시', subj: '체육', t: '박○○', where: '운동장', z: 'out' },
+    { k: '1-3-6', cls: '1-3', per: '6교시', subj: '종교', t: '박○○', where: '5층 동편', z: 'east' },
+    { k: '2-1-6', cls: '2-1', per: '6교시', subj: '도덕', t: '경○○', where: '4층 동편 사회교과실', z: 'east' },
+    { k: '2-2-6', cls: '2-2', per: '6교시', subj: '역사', t: '박○○', where: '2층 동편', z: 'east' },
+    { k: '2-3-6', cls: '2-3', per: '6교시', subj: '국어', t: '이○○', where: '2층 동편', z: 'east' },
+    { k: '2-4-4', cls: '2-4', per: '4교시', subj: '과학', t: '박○○', where: '6층 동편 과학실1', z: 'east' },
+    { k: '2-4-6', cls: '2-4', per: '6교시', subj: '미술', t: '김○○', where: '2층 동편', z: 'east' },
+    { k: '3-1-6', cls: '3-1', per: '6교시', subj: '진로', t: '조○○', where: '4층 본관', z: 'main' },
+    { k: '3-2-5', cls: '3-2', per: '5교시', subj: '과학', t: '안○○', where: '6층 동편 과학실1', z: 'east' },
+    { k: '3-2-6', cls: '3-2', per: '6교시', subj: '수학', t: '김○○', where: '4층 본관', z: 'main' },
+    { k: '3-3-6', cls: '3-3', per: '6교시', subj: '음악', t: '김○○', where: '6층 본관 음악실', z: 'main' },
+    { k: '3-4-6', cls: '3-4', per: '6교시', subj: '사회', t: '박○○', where: '4층 동편', z: 'east' }
+  ];
+  var BY_KEY = {};
+  var ROOMS = [];
+  CLASSES.forEach(function (c) {
+    BY_KEY[c.k] = c;
+    if (ROOMS.indexOf(c.cls) < 0) ROOMS.push(c.cls);
+  });
+  function periodsOf(cls) { return CLASSES.filter(function (c) { return c.cls === cls; }); }
+
+  var DRAFT = 'kmg-observe-draft-v1';
+  var $entries = document.getElementById('entries');
+  var $add = document.getElementById('add');
+  var $err = document.getElementById('err');
+  var $submit = document.getElementById('submit');
+  var $form = document.getElementById('form');
+  var $done = document.getElementById('done');
+  var tpl = document.getElementById('tpl');
+
+  if (!ENDPOINT) {
+    document.getElementById('notice').hidden = false;
+    $submit.disabled = true;
+    $submit.textContent = '준비 중입니다';
+  }
+
+  /* ── 한 칸 만들기 ─────────────────────── */
+  function makeEntry(preset) {
+    var node = tpl.content.firstElementChild.cloneNode(true);
+    var cls = node.querySelector('.cls');
+    var per = node.querySelector('.per');
+    var ta = node.querySelector('.comment');
+    var n = node.querySelector('.n');
+
+    ROOMS.forEach(function (r) {
+      var o = document.createElement('option');
+      o.value = r; o.textContent = r + '반';
+      cls.appendChild(o);
+    });
+
+    cls.addEventListener('change', function () { fillPeriods(node); refresh(); save(); });
+    per.addEventListener('change', function () { showInfo(node); refresh(); save(); });
+    ta.addEventListener('input', function () { n.textContent = ta.value.length; save(); });
+    node.querySelector('.remove').addEventListener('click', function () {
+      if ($entries.children.length <= 1) return;
+      node.parentNode.removeChild(node);
+      refresh(); save();
+    });
+
+    $entries.appendChild(node);
+
+    if (preset) {
+      var c = BY_KEY[preset.k];
+      if (c) {
+        cls.value = c.cls;
+        fillPeriods(node);
+        per.value = c.k;
+        showInfo(node);
+      }
+      ta.value = preset.comment || '';
+      n.textContent = ta.value.length;
+    }
+    return node;
+  }
+
+  function usedKeys(except) {
+    return [].slice.call($entries.children)
+      .filter(function (e) { return e !== except; })
+      .map(function (e) { return e.querySelector('.per').value; })
+      .filter(Boolean);
+  }
+
+  function fillPeriods(node) {
+    var cls = node.querySelector('.cls').value;
+    var per = node.querySelector('.per');
+    var prev = per.value;
+    per.innerHTML = '';
+    if (!cls) {
+      per.appendChild(new Option('—', ''));
+      per.disabled = true;
+      showInfo(node);
+      return;
+    }
+    var used = usedKeys(node);
+    var list = periodsOf(cls);
+    var free = list.filter(function (c) { return used.indexOf(c.k) < 0; });
+    if (list.length > 1) per.appendChild(new Option('선택', ''));
+    list.forEach(function (c) {
+      var o = new Option(c.per, c.k);
+      if (used.indexOf(c.k) >= 0) { o.disabled = true; o.textContent = c.per + ' (이미 고름)'; }
+      per.appendChild(o);
+    });
+    per.disabled = list.length === 1;
+    if (prev && free.some(function (c) { return c.k === prev; })) per.value = prev;
+    else if (free.length === 1) per.value = free[0].k;
+    else if (list.length === 1) per.value = list[0].k;
+    showInfo(node);
+  }
+
+  function showInfo(node) {
+    var box = node.querySelector('.info');
+    var c = BY_KEY[node.querySelector('.per').value];
+    node.classList.remove('main', 'east', 'out');
+    box.innerHTML = '';
+    if (!c) {
+      var ph = document.createElement('span');
+      ph.className = 'ph';
+      ph.textContent = node.querySelector('.cls').value ? '교시를 골라 주세요' : '반과 교시를 고르면 과목이 나옵니다';
+      box.appendChild(ph);
+      return;
+    }
+    node.classList.add(c.z);
+    [['subj', c.subj], ['tchr', c.t + ' 선생님'], ['where', c.where]].forEach(function (p) {
+      var s = document.createElement('span');
+      s.className = p[0]; s.textContent = p[1];
+      box.appendChild(s);
+    });
+  }
+
+  /* 번호 · 삭제 버튼 · 중복 방지 · 추가 버튼 상태 */
+  function refresh() {
+    var list = [].slice.call($entries.children);
+    list.forEach(function (node, i) {
+      node.querySelector('.enum').textContent = '수업 ' + (i + 1);
+      node.querySelector('.remove').hidden = list.length === 1;
+      var used = usedKeys(node);
+      var cls = node.querySelector('.cls');
+      [].forEach.call(cls.options, function (o) {
+        if (!o.value) return;
+        var all = periodsOf(o.value).every(function (c) { return used.indexOf(c.k) >= 0; });
+        o.disabled = all && cls.value !== o.value;
+      });
+      if (cls.value) {
+        var per = node.querySelector('.per');
+        [].forEach.call(per.options, function (o) {
+          if (!o.value) return;
+          var taken = used.indexOf(o.value) >= 0;
+          o.disabled = taken;
+          o.textContent = BY_KEY[o.value].per + (taken ? ' (이미 고름)' : '');
+        });
+      }
+    });
+    $add.disabled = usedKeys(null).length >= CLASSES.length || list.length >= CLASSES.length;
+  }
+
+  /* ── 임시 저장 ────────────────────────── */
+  function collect() {
+    return [].slice.call($entries.children).map(function (e) {
+      return { k: e.querySelector('.per').value, comment: e.querySelector('.comment').value };
+    });
+  }
+  function save() {
+    try { localStorage.setItem(DRAFT, JSON.stringify(collect())); } catch (e) {}
+  }
+  function load() {
+    try { return JSON.parse(localStorage.getItem(DRAFT) || 'null'); } catch (e) { return null; }
+  }
+
+  /* ── 보내기 ───────────────────────────── */
+  function showErr(msg) { $err.textContent = msg; $err.hidden = !msg; }
+
+  $add.addEventListener('click', function () {
+    var node = makeEntry();
+    refresh();
+    node.querySelector('.cls').focus();
+  });
+
+  $form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    showErr('');
+    if (!ENDPOINT) return;
+
+    var items = collect();
+    for (var i = 0; i < items.length; i++) {
+      var node = $entries.children[i];
+      if (!items[i].k) {
+        showErr('수업 ' + (i + 1) + ': 반과 교시를 골라 주세요.');
+        node.querySelector(items[i].k ? '.comment' : (node.querySelector('.cls').value ? '.per' : '.cls')).focus();
+        return;
+      }
+      if (items[i].comment.trim().length < 2) {
+        showErr('수업 ' + (i + 1) + ': 참관록을 적어 주세요.');
+        node.querySelector('.comment').focus();
+        return;
+      }
+    }
+
+    $submit.disabled = true;
+    $submit.textContent = '보내는 중…';
+
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ items: items, website: document.getElementById('website').value })
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (res) {
+        if (!res || !res.ok) throw new Error((res && res.error) || '');
+        try { localStorage.removeItem(DRAFT); } catch (e2) {}
+        /* 안내문 상단 '참관 순서'에서 ②수업 참관 · ③참관록을 완료로 표시 */
+        try {
+          var st = JSON.parse(localStorage.getItem('kmg-openclass-steps') || '{}') || {};
+          st.s2 = true; st.s3 = true;
+          localStorage.setItem('kmg-openclass-steps', JSON.stringify(st));
+        } catch (e3) {}
+        document.getElementById('doneMsg').textContent =
+          res.count + '개 수업의 참관록이 전달되었습니다.';
+        document.getElementById('doneId').textContent = '접수 번호 ' + res.id;
+        $form.hidden = true;
+        $done.hidden = false;
+        window.scrollTo(0, 0);
+      })
+      .catch(function (err) {
+        showErr((err && err.message) ||
+          '보내지 못했습니다. 인터넷 연결을 확인하고 다시 눌러 주세요. 적어 두신 내용은 그대로 있습니다.');
+        $submit.disabled = false;
+        $submit.textContent = '다시 보내기';
+      });
+  });
+
+  document.getElementById('again').addEventListener('click', function () {
+    $entries.innerHTML = '';
+    makeEntry();
+    refresh();
+    $done.hidden = true;
+    $form.hidden = false;
+    $submit.disabled = !ENDPOINT;
+    $submit.textContent = ENDPOINT ? '참관록 보내기' : '준비 중입니다';
+    window.scrollTo(0, 0);
+  });
+
+  /* ── 시작 ─────────────────────────────── */
+  var draft = load();
+  if (draft && draft.length) draft.forEach(function (d) { makeEntry(d); });
+  else makeEntry();
+  refresh();
+})();
+</script>
+</body>
+</html>

@@ -118,7 +118,38 @@ img{display:block}
 .wrap{width:100%;max-width:760px;margin:0 auto;padding:0 20px}
 
 /* ── 상단 고정 ─────────────────────────── */
-.top{position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:1px solid var(--line)}
+.top{position:sticky;top:0;z-index:30;background:var(--bg);
+  border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line)}
+
+/* 참관 순서 (서명부 → 수업 참관 → 참관록) */
+.steps{display:flex;align-items:center;gap:12px;padding:10px 0 9px}
+.stitle{flex:none;font-size:12.5px;font-weight:700;line-height:1.3;color:var(--muted)}
+.slist{list-style:none;margin:0;padding:0;display:flex;gap:7px;flex:1;min-width:0}
+.slist[hidden],.step[hidden],.sdone[hidden],.sreset[hidden]{display:none!important}
+.step{flex:1;min-width:0}
+.step > a,.step > button{
+  width:100%;display:flex;align-items:center;justify-content:center;gap:7px;
+  font:inherit;font-size:var(--sm);font-weight:700;text-decoration:none;cursor:pointer;
+  padding:9px 8px;border-radius:10px;white-space:nowrap;
+  border:1.5px solid var(--line);background:var(--bg);color:var(--ink-2);
+  transition:transform .12s}
+.step > a:hover,.step > button:hover{transform:translateY(-1px)}
+.step > a:focus-visible,.step > button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.step .sn{flex:none;width:22px;height:22px;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-family:"Roboto Mono",ui-monospace,monospace;font-size:12.5px;font-weight:700;
+  background:var(--surface);color:var(--muted)}
+.step.cur > a,.step.cur > button{background:var(--gold);border-color:var(--gold);color:var(--on-gold);
+  box-shadow:0 2px 8px rgba(242,183,5,.35)}
+.step.cur .sn{background:var(--on-gold);color:var(--gold)}
+.sdone{flex:1;font-size:var(--sm);font-weight:700;color:var(--green-ink)}
+.sreset{flex:none;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;
+  color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:999px;padding:4px 11px}
+.sreset:hover{color:var(--ink-2)}
+@media (max-width:440px){
+  .stitle{display:none}
+  .step > a,.step > button{font-size:14px;padding:9px 5px;gap:5px}
+}
 .ribbon{display:flex;height:5px}
 .ribbon i{flex:1}
 .ribbon i:nth-child(1){background:var(--red)}
@@ -527,16 +558,37 @@ footer a{color:var(--blue-ink)}
 @media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}}
 </style>
 
-<header class="top">
-  <div class="ribbon"><i></i><i></i><i></i><i></i></div>
-  <div class="wrap">
-    <div class="brand">
-      <img id="logo" src="kmg-logo-sm.png" width="508" height="112" alt="경민여자중학교">
-      <p class="brandtext" id="brandtext" hidden>경민여자중학교</p>
-      <div>
-        <p class="ev">2026학년도 2학기 수업공개</p>
-      </div>
+<div class="ribbon"><i></i><i></i><i></i><i></i></div>
+<div class="wrap">
+  <div class="brand">
+    <img id="logo" src="kmg-logo-sm.png" width="508" height="112" alt="경민여자중학교">
+    <p class="brandtext" id="brandtext" hidden>경민여자중학교</p>
+    <div>
+      <p class="ev">2026학년도 2학기 수업공개</p>
     </div>
+  </div>
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <nav class="steps" id="steps" aria-label="참관 순서">
+      <p class="stitle">순서대로<br>진행해 주세요</p>
+      <ol class="slist" id="slist">
+        <li class="step" data-step="1">
+          <a href="https://script.google.com/macros/s/AKfycby6Bn35sU4Zi69jrqzM7wJG277NJH4oKYzWBLuFq7GhSwpVMLFXBnqR-Y43ahQeSjnA/exec?s=1470075087"
+             target="_blank" rel="noopener" data-mark="1"><span class="sn">1</span><span class="sl">서명부</span></a>
+        </li>
+        <li class="step" data-step="2">
+          <button type="button" data-goto="classes"><span class="sn">2</span><span class="sl">수업 참관</span></button>
+        </li>
+        <li class="step" data-step="3">
+          <a href="https://scienceahnt.github.io/2026kmgmsopenclass/observe.html"
+             target="_blank" rel="noopener"><span class="sn">3</span><span class="sl">참관록</span></a>
+        </li>
+      </ol>
+      <p class="sdone" id="sdone" hidden>✓ 서명 · 참관 · 참관록을 모두 마치셨습니다. 고맙습니다.</p>
+      <button class="sreset" id="sreset" type="button" hidden>되돌리기</button>
+    </nav>
   </div>
   <div class="wrap">
     <nav class="tabs" role="tablist" aria-label="안내 항목">
@@ -983,19 +1035,10 @@ footer a{color:var(--blue-ink)}
 </main>
 
 <div class="wrap actions">
-  <!-- 참관록 자리.
-       링크가 정해지면 아래 <span class="abtn form soon"> 블록을 지우고
-       바로 밑 <a> 주석을 풀어 href만 채우면 됩니다. -->
-  <span class="abtn form soon" aria-disabled="true">
+  <a class="abtn form" href="https://scienceahnt.github.io/2026kmgmsopenclass/observe.html" target="_blank" rel="noopener">
     <span class="ic" aria-hidden="true">✎</span>
-    <span><b>참관록 작성하기</b><em>수업을 보신 뒤 이곳에서 남겨 주세요 · 준비 중</em></span>
-  </span>
-  <!--
-  <a class="abtn form" href="참관록_링크" target="_blank" rel="noopener">
-    <span class="ic" aria-hidden="true">✎</span>
-    <span><b>참관록 작성하기</b><em>수업을 보신 뒤 남겨 주세요</em></span>
+    <span><b>참관록 작성하기</b><em>보신 수업을 고르고 짧게 남겨 주세요</em></span>
   </a>
-  -->
 
   <a class="callsm" href="tel:031-828-7882"><span aria-hidden="true">☎</span>문의 031-828-7882</a>
 </div>
@@ -1209,6 +1252,49 @@ footer a{color:var(--blue-ink)}
     });
   });
 
+  /* ── 참관 순서 (서명부 → 수업 참관 → 참관록) ── */
+  var STEP_KEY = 'kmg-openclass-steps';
+  var slist = document.getElementById('slist');
+  var sdone = document.getElementById('sdone');
+  var sreset = document.getElementById('sreset');
+  function getSteps() {
+    try { return JSON.parse(localStorage.getItem(STEP_KEY) || '{}') || {}; } catch (e) { return {}; }
+  }
+  function putSteps(s) {
+    try { localStorage.setItem(STEP_KEY, JSON.stringify(s)); } catch (e) {}
+  }
+  function renderSteps() {
+    var s = getSteps();
+    var n = kst();
+    var min = n.getHours() * 60 + n.getMinutes();
+    var days = Math.round((new Date(2026, 8, 22) - new Date(n.getFullYear(), n.getMonth(), n.getDate())) / 86400000);
+    var classOver = days < 0 || (days === 0 && min >= 915);
+    var done = { 1: !!s.s1, 2: !!s.s2 || !!s.s3 || classOver, 3: !!s.s3 };
+    var cur = 0;
+    [1, 2, 3].forEach(function (k) {
+      var li = slist.querySelector('[data-step="' + k + '"]');
+      li.hidden = done[k];
+      li.classList.remove('cur');
+      if (!done[k] && !cur) { cur = k; li.classList.add('cur'); }
+    });
+    var all = done[1] && done[2] && done[3];
+    slist.hidden = all;
+    sdone.hidden = !all;
+    sreset.hidden = !(s.s1 || s.s2 || s.s3);
+  }
+  slist.querySelector('[data-mark="1"]').addEventListener('click', function () {
+    var s = getSteps(); s.s1 = true; putSteps(s);
+    setTimeout(renderSteps, 400);
+  });
+  sreset.addEventListener('click', function () {
+    try { localStorage.removeItem(STEP_KEY); } catch (e) {}
+    renderSteps();
+  });
+  /* 참관록을 다른 탭에서 보내고 돌아오면 바로 반영 */
+  window.addEventListener('storage', function (e) { if (e.key === STEP_KEY) renderSteps(); });
+  window.addEventListener('focus', renderSteps);
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) renderSteps(); });
+
   /* ── 지도 가로 스크롤 표시 ──────────── */
   var mw = document.getElementById('mapwrap');
   var hint = document.getElementById('hint');
@@ -1293,6 +1379,7 @@ footer a{color:var(--blue-ink)}
     var days = Math.round((evd - nd) / 86400000);
     var cls = 'live', txt = '';
     marks(min, days === 0);
+    renderSteps();
 
     /* 수업이 끝난 뒤에는 신청 배너를 감춘다 */
     var apply = document.getElementById('applybtn');
