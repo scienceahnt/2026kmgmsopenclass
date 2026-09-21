@@ -269,6 +269,24 @@ footer a{color:var(--muted)}
     $submit.textContent = '준비 중입니다';
   }
 
+  /* ── 서버 미리 깨우기 ─────────────────────
+     Apps Script 는 한동안 요청이 없으면 잠들어서 첫 요청이 느립니다.
+     페이지를 열 때, 쓰기 시작할 때 미리 한 번 불러 두면
+     '보내기'를 누를 때는 이미 깨어 있습니다. (응답은 쓰지 않음) */
+  var lastWarm = 0;
+  function warm() {
+    if (!ENDPOINT) return;
+    var now = Date.now();
+    if (now - lastWarm < 3 * 60 * 1000) return;
+    lastWarm = now;
+    try { fetch(ENDPOINT, { method: 'GET', mode: 'no-cors', cache: 'no-store' }).catch(function () {}); } catch (e) {}
+  }
+  warm();
+  document.addEventListener('focusin', function (e) {
+    if (e.target && (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT')) warm();
+  });
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) warm(); });
+
   /* ── 한 칸 만들기 ─────────────────────── */
   function makeEntry(preset) {
     var node = tpl.content.firstElementChild.cloneNode(true);
@@ -432,6 +450,7 @@ footer a{color:var(--muted)}
 
     $submit.disabled = true;
     $submit.textContent = '보내는 중…';
+    var slow = setTimeout(function () { $submit.textContent = '저장하는 중… 잠시만 기다려 주세요'; }, 1500);
 
     fetch(ENDPOINT, {
       method: 'POST',
@@ -440,6 +459,7 @@ footer a{color:var(--muted)}
     })
       .then(function (r) { return r.json(); })
       .then(function (res) {
+        clearTimeout(slow);
         if (!res || !res.ok) throw new Error((res && res.error) || '');
         try { localStorage.removeItem(DRAFT); } catch (e2) {}
         /* 안내문 상단 '참관 순서'에서 ②수업 참관 · ③참관록을 완료로 표시 */
@@ -456,6 +476,7 @@ footer a{color:var(--muted)}
         window.scrollTo(0, 0);
       })
       .catch(function (err) {
+        clearTimeout(slow);
         showErr((err && err.message) ||
           '보내지 못했습니다. 인터넷 연결을 확인하고 다시 눌러 주세요. 적어 두신 내용은 그대로 있습니다.');
         $submit.disabled = false;
