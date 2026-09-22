@@ -56,7 +56,7 @@ body{margin:0;background:var(--bg);color:var(--ink);
   font-size:var(--md);line-height:1.7;-webkit-font-smoothing:antialiased;word-break:keep-all}
 h1,h2,p{margin:0}
 [hidden]{display:none!important}
-.wrap{max-width:640px;margin:0 auto;padding:0 18px}
+.wrap{max-width:640px;margin:0 auto;padding-left:max(22px,env(safe-area-inset-left));padding-right:max(22px,env(safe-area-inset-right))}
 
 .ribbon{display:flex;height:5px}
 .ribbon i{flex:1}
@@ -65,7 +65,7 @@ h1,h2,p{margin:0}
 .ribbon i:nth-child(3){background:var(--gold)}
 .ribbon i:nth-child(4){background:var(--blue)}
 
-.top{padding:26px 0 8px}
+.top{padding-top:26px;padding-bottom:8px}
 .back{display:inline-flex;align-items:center;gap:6px;font-size:var(--xs);font-weight:700;
   color:var(--muted);text-decoration:none;margin-bottom:18px}
 .back:hover{color:var(--ink-2)}
