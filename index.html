@@ -575,8 +575,8 @@ footer a{color:var(--blue-ink)}
       <p class="stitle">순서대로<br>진행해 주세요</p>
       <ol class="slist" id="slist">
         <li class="step" data-step="1">
-          <a href="https://script.google.com/macros/s/AKfycby6Bn35sU4Zi69jrqzM7wJG277NJH4oKYzWBLuFq7GhSwpVMLFXBnqR-Y43ahQeSjnA/exec?s=566700254"
-             target="_blank" rel="noopener" data-mark="1"><span class="sn">1</span><span class="sl">서명부</span></a>
+          <a href="https://scienceahnt.github.io/2026kmgmsopenclass/sign.html"
+             target="_blank" rel="noopener"><span class="sn">1</span><span class="sl">서명부</span></a>
         </li>
         <li class="step" data-step="2">
           <button type="button" data-goto="classes"><span class="sn">2</span><span class="sl">수업 참관</span></button>
@@ -1282,10 +1282,7 @@ footer a{color:var(--blue-ink)}
     sdone.hidden = !all;
     sreset.hidden = !(s.s1 || s.s2 || s.s3);
   }
-  slist.querySelector('[data-mark="1"]').addEventListener('click', function () {
-    var s = getSteps(); s.s1 = true; putSteps(s);
-    setTimeout(renderSteps, 400);
-  });
+  /* ① 서명부 · ③ 참관록은 각 페이지에서 제출에 성공해야 완료로 기록됩니다 */
   sreset.addEventListener('click', function () {
     try { localStorage.removeItem(STEP_KEY); } catch (e) {}
     renderSteps();
